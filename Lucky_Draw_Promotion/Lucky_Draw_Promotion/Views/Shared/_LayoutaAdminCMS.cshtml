@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/CSS/Layout2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link href="~/Content/CSS/style.css" rel="stylesheet" />
+    <link href="~/Content/CSS/normalize.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="~/Content/JS/main.js"></script>
+</head>
+<body>
+
+
+    <div class="topnav" id="topnav">
+        <img src="~/Content/images/logo(alta).png" style="float:left;padding-right:14px;height:70px;" />
+        <a class="Mybtn" href="@Url.Action("Dashboard","Dashboard")"><i class="fa fa-fw fa-home" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Dashboard</div></a>
+        <a class="Mybtn" href="@Url.Action("Campaign","Campaign")"><i class="fa-solid fa-tags" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Campaign</div></a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                <i class="fa-solid fa-gift" style="margin-left:auto;margin-right:auto;font-size:20px"></i>
+
+                <div>
+                    Gifts
+                    <i class="fa fa-caret-down"></i>
+                </div>
+
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+
+        </div>
+        <a class="Mybtn" href="@Url.Action("Customer","Customer")"><i class="fa-solid fa-user" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Customer</div></a>
+        <a class="Mybtn" href="#Setting"><i class="fa-solid fa-gear" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Setting</div></a>
+        <div class="search-container">
+            <form action="">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="navtag">
+        <a class="link active" href="@Url.Action("Dashboard","Dashboard")"><i class="fa fa-fw fa-home" style="font-size:16px;padding-right:5px;"></i>Dashboard</a>
+        <a class="" href="" style="padding-left:20px;text-decoration:none;">@ViewBag.Title</a>
+        <a class="" href="" style="padding-left:20px;text-decoration:none;"></a>
+
+    </div>
+    @RenderBody()
+
+
+    @*<script src="JavaScript/jquery-1.10.2.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            $(function () {
+                // this will get the full URL at the address bar
+                var url = window.location.href;
+
+                // passes on every "a" tag
+                $(".topnav a").each(function () {
+                    // checks if its the same on the address bar
+                    if (url == (this.href)) {
+                        $(this).addClass("active");
+                        //for making parent of submenu active
+                        $(this).parent().parent().addClass("active");
+                    }
+                });
+            });
+        </script>*@
+
+
+    <script src="~/Content/JS/main.js"></script>
+</body>
+
+</html>
+

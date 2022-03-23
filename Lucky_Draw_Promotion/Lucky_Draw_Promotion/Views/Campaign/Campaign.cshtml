@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "Campaign";
+    Layout = "~/Views/Shared/_LayoutaAdminCMS.cshtml";
+}
+<script>
+    const button = document.querySelector("#button");
+    const select = document.querySelector('#drpdown');
+    const options = document.querySelectorAll(".option");
+    const selectLabel = document.querySelector('#select-label');
+
+    button.addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleHidden();
+    });
+
+    function toggleHidden() {
+        select.classList.toggle("hidden");
+    }
+
+    options.forEach(function (option) {
+        option.addEventListener("click", function (e) {
+            setSelectTitle(e);
+        });
+    });
+
+    function setSelectTitle(e) {
+        const labelElement = document.querySelector(`label[for="${e.target.id}"]`).innerText;
+        selectLabel.innerText = labelElement;
+        toggleHidden();
+    };
+
+</script>
+
+<div class="navmenu">
+    <a class="drawing" href="@Url.Action("Campaign","Campaign")"><i class="fa fa-fw fa-home" style="font-size:25px;padding-right:5px;"></i>Campaigns</a>
+
+
+    <i class="fa-solid fa-circle-plus insert iconView" style="float:right;cursor:pointer;font-size:30px;color:#c55a11;"></i>
+</div>
+
+<div class="navmenu2">
+
+    <select id="selectbox" data-selected="">
+        <option value="" selected="selected" disabled="disabled">Select an image</option>
+        <option value="1">Ocean Wall</option>
+        <option value="2">Skate Park</option>
+        <option value="3">Mountain View</option>
+        <option value="4">Cityscape</option>
+        <option value="5">Workshop</option>
+    </select>
+
+
+
+</div>
+
+<div class="navmenu2">
+    <table class="fill">
+        <tr>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>Expired Date</th>
+            <th>Activated Code</th>
+            <th>Gifts Quantity</th>
+            <th>Scanned</th>
+            <th>Used for spin</th>
+            <th>Win</th>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+            <td>Peter</td>
+            <td>Griffin</td>
+        </tr>
+        <tr>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+            <td>Peter</td>
+            <td>Griffin</td>
+        </tr>
+    </table>
+</div>
+
+<script src="~/Content/JS/main.js"></script>
+
+
+@*<script>
+    // Get the container element
+    var btnContainer = document.getElementById("topnav");
+
+    // Get all buttons with class="btn" inside the container
+    var btns = btnContainer.getElementsByClassName("Mybtn");
+    btns[0].classList.add("active");
+    // Loop through the buttons and add the active class to the current/clicked button
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            if (btns[0].classList.contains("active")) {
+                btns[0].classList.remove("active");
+                continue;
+            }
+            // var current = document.getElementsByClassName("active");
+            // current[0].className = current[0].className.replace(" active", "");
+            // this.className += " active";
+            else {
+                btns[i].classList.add("active");
+
+            }
+        });
+    }
+</script>*@

@@ -1,0 +1,160 @@
+﻿
+@{
+    //ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutaAdminCMS.cshtml";
+}
+
+<div class="navmenu">
+    <a class="drawing" href="@Url.Action("Dashboard","Dashboard")"><i class="fa fa-fw fa-home" style="font-size:25px;padding-right:5px;"></i>Dashboard</a>
+    
+    <button style="background: url(/Content/images/Button_Time.png);float:right;height:60px;min-width:360px;background-repeat:no-repeat;border:none;cursor:pointer;"></button>
+</div>
+
+<div class="navmenu2">
+
+    <div class="grid">
+        <i class="fa-solid fa-circle-plus insert iconView"></i>
+        <div style="float:right;">
+
+            <div class="insert border">400.000</div>
+            <div>Code Activated</div>
+
+        </div>
+    </div>
+
+    <div class="grid">
+        <i class="fa-solid fa-border-all iconView"></i>
+        <div style="float:right;">
+
+            <div class="insert border">50</div>
+            <div>Scanned</div>
+
+        </div>
+    </div>
+
+    <div class="grid">
+        <i class="fa-solid fa-gift iconView" style="color:blueviolet;"></i>
+        <div style="float:right;">
+
+            <div class="insert border">50</div>
+            <div>Used for spin</div>
+
+        </div>
+    </div>
+
+    <div class="grid">
+        <i class="fa-solid fa-user-tag insert iconView"></i>
+        <div style="float:right;">
+
+            <div class="insert border">20</div>
+            <div>Winners</div>
+
+        </div>
+    </div>
+
+    
+
+</div>
+
+<div class="navmenu3">
+    <div class="drawing">Campaigns List</div>
+</div>
+
+<div class="navmenu2">
+    <table class="fill">
+        <tr>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>Expired Date</th>
+            <th>Activated Code</th>
+            <th>Gifts Quantity</th>
+            <th>Scanned</th>
+            <th>Used for spin</th>
+            <th>Win</th>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+            <td>Peter</td>
+            <td>Griffin</td>
+        </tr>
+        <tr>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+            <td>Peter</td>
+            <td>Griffin</td>
+        </tr>
+    </table>
+</div>
+
+@*<div class="topnav" id="topnav">
+        <img src="~/Content/images/logo(alta).png" style="float:left;padding-right:14px;height:70px;" />
+        <a class="Mybtn active" href="@Url.Action("Dashboard","Dashboard")"><i class="fa fa-fw fa-home" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Dashboard</div></a>
+        <a class="Mybtn" href="@Url.Action("Campaign","Campaign")"><i class="fa-solid fa-clipboard" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Campaign</div></a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                <i class="fa-solid fa-gift" style="margin-left:auto;margin-right:auto;font-size:20px"></i>
+                <div>
+                    Gifts
+                    <i class="fa fa-caret-down"></i>
+                </div>
+
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+
+        </div>
+        <a class="Mybtn" href="@Url.Action("Customer","Customer")"><i class="fa-solid fa-user" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Customer</div></a>
+        <a class="Mybtn" href="#Setting"><i class="fa-solid fa-gear" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Setting</div></a>
+        <div class="search-container">
+            <form action="">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+
+    <nav class="navtag">
+        <a class="link active" href="@Url.Action("Dashboard","Dashboard")"><i class="fa fa-fw fa-home" style="font-size:16px;padding-right:5px;"></i>@ViewBag.Title</a>
+        <a class="link" href="">@ViewBag.List</a>
+    </nav>*@
+
+
+<script>
+    // Get the container element
+    var btnContainer = document.getElementById("topnav");
+
+// Get all buttons with class="btn" inside the container
+    var btns = btnContainer.getElementsByClassName("Mybtn");
+    btns[0].classList.add("active");
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+        if (btns[0].classList.contains("active")) {
+            btns[0].classList.remove("active");
+            continue;
+        }
+        // var current = document.getElementsByClassName("active");
+        // current[0].className = current[0].className.replace(" active", "");
+        // this.className += " active";
+        else {
+            btns[i].classList.add("active");
+          
+            
+        }
+  });
+}
+</script>

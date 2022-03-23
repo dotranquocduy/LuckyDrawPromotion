@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "ForgotPass";
+    Layout = "~/Views/Shared/_LayoutAuthenicationCMS.cshtml";
+}
+
+
+    <h1 style="text-align: center;margin: 24px 0 12px 0;">Forgot Password</h1>
+    <div class="container">
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+
+        <div class="g-recaptcha" data-sitekey="6Lf2RvMeAAAAAK0f0HjDQ-RzVuRCnXopzb7FtdO3" style="padding-top:5px;padding-bottom:5px;"></div>
+
+        <button type="submit" name="submit" value="forgotpass">Recover Password</button>
+
+    </div>
+
+
+@*<span style=" font-size:20px;margin:20px 0;padding:20px;border:1px solid #ff0000">
+    @ViewData["Message"]
+</span>*@
+
+<script src='https://www.google.com/recaptcha/api.js' type="text/javascript"></script>
+
+

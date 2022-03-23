@@ -1,0 +1,238 @@
+﻿body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #D1CFF3;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #3864b3;
+}
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: #fff;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+        .topnav .Mybtn:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+
+/*SEARCH*/
+
+    .topnav .search-container {
+        float: right;
+    }
+
+    .topnav input[type=text] {
+        padding: 6px;
+        margin-top: 16px;
+        font-size: 18px;
+        border: none;
+    }
+
+    .topnav .search-container button {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 16px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+    }
+
+        .topnav .search-container button:hover {
+            background: #ccc;
+        }
+
+
+/*DROP_DOWN*/
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: #ccc;
+        color:black;
+    }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/**/
+@media screen and (max-width: 600px) {
+    .topnav .search-container {
+        float: none;
+    }
+
+        .topnav a, .topnav input[type=text], .topnav .search-container button {
+            float: none;
+            display: block;
+            text-align: left;
+            width: 100%;
+            margin: 0;
+            padding: 14px;
+        }
+
+    .topnav input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
+
+/*nav tag menu link*/
+    .navtag {
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        
+    }
+    .navtag .link {
+        text-decoration: none;
+        display: inline-block;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 14px 16px;
+        font-size: 16px;      
+        color: #1f4e79;
+    
+    }
+        .navtag .link.active {
+            font-weight: bold;
+            position: relative;
+        }
+
+      .link::before {
+        content: "/";
+        position:absolute;
+        right: -10px;
+        color: #1f4e79;
+    }
+.navtag > .link.active:last-child::before {
+    display: none;
+}
+
+
+/*xu li*/
+.navmenu {
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 96%;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #deebf7;
+    padding: 10px;
+    box-shadow: 4px 4px #888888;
+}
+
+.drawing {
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 16px 16px;
+    font-size: 25px;
+    color: black;
+    font-weight:bold;
+}
+
+.navmenu2 {
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 96%;
+    margin-right: auto;
+    margin-left: auto;
+    border: 2px solid #3864b3;
+    padding: 10px;
+    box-shadow: 1px 1px rgba(0,0,0,0.2);
+    margin-top:30px;
+    background:#fff;
+}
+
+.navmenu3 {
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 96%;
+    margin-right: auto;
+    margin-left: auto;    
+    padding: 10px;
+ 
+}
+.navmenu2 .insert {
+    color: #c55a11;
+}
+.border {
+    font-weight: bold;
+}
+
+.grid{
+    padding: 25px 80px;
+    display:inline-block;
+    font-size:30px;
+}
+.iconView {
+    padding-right: 20px;
+    padding-top: 25px;
+}
+
+
+/*table column campaigns list*/
+.fill {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    padding: 20px; 
+    border-top: 1px solid #4472c4;
+    text-align:center;
+}
+th{
+    
+    padding-bottom:20px;
+    padding-top:20px;
+}

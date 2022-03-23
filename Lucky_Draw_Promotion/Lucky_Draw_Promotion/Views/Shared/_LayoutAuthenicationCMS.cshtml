@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/CSS/Layout1.css" rel="stylesheet" />
+    <style>
+        * {
+          
+            background-color: #D1CFF3;
+            /*background-image: linear-gradient(#D1CFF3,#D2D9F7);*/
+        }
+    </style>
+</head>
+<body>
+    <form action="@Url.Action("FormSubmit","AuthenticationCMS")" method="post">
+        <div class="imgcontainer">
+            <img src="~/Content/images/AccountUser.png" alt="Avatar" class="avatar">
+        </div>
+        @RenderBody()
+    </form>
+       
+</body>
+</html>
