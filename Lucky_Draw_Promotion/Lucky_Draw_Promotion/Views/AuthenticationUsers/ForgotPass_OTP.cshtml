@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "ForgotPass_OTP";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+}
+
+<style>
+
+    input[type=text], input[type=password], input[type=number], input[type=datetime] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid dodgerblue;
+        box-sizing: border-box;
+    }
+</style>
+
+<div class="login100-form validate-form" style="margin-left:auto;margin-right:auto;" id="sender">
+    <span class="login100-form-title" style="font-weight:bold;width:100%;">
+        Nhập số điện thoại để đặt mật khẩu
+    </span>
+
+    <div class="wrap-input100 validate-input" data-validate="number is required">
+        <input class="input100" type="number" name="number" id="number" placeholder="Nhập số điện thoại (+84)">
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+    </div>
+    <div id="recaptcha-container"></div>
+
+
+    <div class="container-login100-form-btn">
+        <button class="login100-form-btn" onclick="phoneAuth()">
+            Send
+        </button>
+    </div>
+
+</div>
+
+<div class="login100-form validate-form" style="margin-left:auto;margin-right:auto;display:none;" id="verifier">
+    <span class="login100-form-title" style="font-weight:bold;">
+        Đổi mật khẩu
+    </span>
+
+    <div class="wrap-input100 validate-input" data-validate="">
+        <input class="input100" type="text" id="verificationCode" name="OTP" placeholder="Nhập mã OTP">
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+
+    </div>
+    @*<p style="margin-left:20px;color:#808080;font-size:18px;">Mã OTP sẽ vô hiệu lực trong</p>*@
+    <div class="text-center p-t-40">
+        <a class="txt2" href="#">
+            Gửi lại
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <div class="container-login100-form-btn">
+        <button class="login100-form-btn" onclick="codeverify();">
+            Send
+        </button>
+    </div>
+    <div class="text-center p-t-40" style="bottom:0;">
+        <a class="txt2" href="#">
+            Quay lại
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+
+
+
+<!--Add firebase SDK-->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+<script>
+    //import firebase from "firebase/app";
+    //import "firebase/auth";
+   
+    //// Your web app's Firebase configuration
+    //// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyBgsWNXjNjd2XYq3RUzpuJCUKLj8TLJT2w",
+        authDomain: "otpvertification.firebaseapp.com",
+        projectId: "otpvertification",
+        storageBucket: "otpvertification.appspot.com",
+        messagingSenderId: "142001694088",
+        appId: "1:142001694088:web:e2d821b4047d5051ae463d",
+        measurementId: "G-V5FLGN98E7"
+    };
+
+
+    //// Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    render();
+
+    function render() {
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+        recaptchaVerifier.render();
+    }
+    window.onload = function () {
+        render();
+    };
+    function phoneAuth() {
+          debugger
+        var a = document.getElementById('number').value;
+        //var b = "+84";
+        var phoneNumber = a;
+
+        //   var phoneNumber = getPhoneNumberFromUserInput();
+
+         //var testVerificationCode = "123456";
+
+        // var appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+
+        // signInWithPhoneNumber will call appVerifier.verify() which will resolve with a fake
+        // reCAPTCHA response.
+        firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
+            .then(function (confirmationResult) {
+                // confirmationResult can resolve with the fictional testVerificationCode above.
+                //return confirmationResult.confirm(testVerificationCode)
+                alert("mã OTP đã gửi !!")
+                window.confirmationResult = confirmationResult;
+                coderesult = confirmationResult;
+                document.getElementById('sender').style.display = "none";
+                document.getElementById('verifier').style.display = "block";
+                console.log(coderesult);
+              
+                //window.location.href = "/AuthenticationUsers/OTP";
+                //  return confirmationResult.confirm(testVerificationCode)
+            }).catch(function (error) {
+                // Error; SMS not sent
+                // ...
+                error.message = "Lỗi gửi mã OTP";
+                alert(error.message);
+            });
+    }
+
+    function codeverify() {
+        debugger
+        var code = document.getElementById('verificationCode').value;
+        coderesult.confirm(code).then(function (result) {
+            // User signed in successfully.
+            alert("Đăng nhập mã OTP thành công!!")
+            var user = result.user;
+            console.log(user);
+            window.location.href = "/AuthenticationUsers/RecoverPass/" + document.getElementById('number').value;
+            // ...
+        }).catch((error) => {
+            // User couldn't sign in (bad verification code?)
+            // ...
+            error.message = "Lỗi gửi mã OTP";
+            alert(error.message);
+        });
+    }
+
+</script>
+

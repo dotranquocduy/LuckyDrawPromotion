@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LucKyDrawPromotionDBModelStoreContainer" CdmEntityContainer="LucKyDrawPromotionDBEntities">
+    <EntitySetMapping Name="Campaigns">
+      <EntityTypeMapping TypeName="LucKyDrawPromotionDBModel.Campaign">
+        <MappingFragment StoreEntitySet="Campaign">
+          <ScalarProperty Name="MaCampaign" ColumnName="MaCampaign" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Scanned" ColumnName="Scanned" />
+          <ScalarProperty Name="UsedForSpin" ColumnName="UsedForSpin" />
+          <ScalarProperty Name="Winner" ColumnName="Winner" />
+          <ScalarProperty Name="IsPartipate" ColumnName="IsPartipate" />
+          <ScalarProperty Name="descriptionCA" ColumnName="descriptionCA" />
+          <ScalarProperty Name="CampaignCode" ColumnName="CampaignCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChucVus">
+      <EntityTypeMapping TypeName="LucKyDrawPromotionDBModel.ChucVu">
+        <MappingFragment StoreEntitySet="ChucVu">
+          <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+          <ScalarProperty Name="TenCV" ColumnName="TenCV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodeQRs">
+      <EntityTypeMapping TypeName="LucKyDrawPromotionDBModel.CodeQR">
+        <MappingFragment StoreEntitySet="CodeQR">
+          <ScalarProperty Name="MaCode" ColumnName="MaCode" />
+          <ScalarProperty Name="NameCodeQR" ColumnName="NameCodeQR" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ScalarProperty Name="usage" ColumnName="usage" />
+          <ScalarProperty Name="QRCount" ColumnName="QRCount" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Scanned" ColumnName="Scanned" />
+          <ScalarProperty Name="MaCampaign" ColumnName="MaCampaign" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="isWinPrize" ColumnName="isWinPrize" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gifts">
+      <EntityTypeMapping TypeName="LucKyDrawPromotionDBModel.Gift">
+        <MappingFragment StoreEntitySet="Gift">
+          <ScalarProperty Name="MaGift" ColumnName="MaGift" />
+          <ScalarProperty Name="NameGift" ColumnName="NameGift" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="Probability" ColumnName="Probability" />
+          <ScalarProperty Name="RuleName" ColumnName="RuleName" />
+          <ScalarProperty Name="GiftCode" ColumnName="GiftCode" />
+          <ScalarProperty Name="scheldule" ColumnName="scheldule" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="usage" ColumnName="usage" />
+          <ScalarProperty Name="GiftCount" ColumnName="GiftCount" />
+          <ScalarProperty Name="MaCampaign" ColumnName="MaCampaign" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhanQuyens">
+      <EntityTypeMapping TypeName="LucKyDrawPromotionDBModel.PhanQuyen">
+        <MappingFragment StoreEntitySet="PhanQuyen">
+          <ScalarProperty Name="MaPQ" ColumnName="MaPQ" />
+          <ScalarProperty Name="TenCV" ColumnName="TenCV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="LucKyDrawPromotionDBModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="details" ColumnName="details" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userAccounts">
+      <EntityTypeMapping TypeName="LucKyDrawPromotionDBModel.userAccount">
+        <MappingFragment StoreEntitySet="userAccount">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TenUser" ColumnName="TenUser" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="repass" ColumnName="repass" />
+          <ScalarProperty Name="LoaiHinhKD" ColumnName="LoaiHinhKD" />
+          <ScalarProperty Name="IsActiveBox" ColumnName="IsActiveBox" />
+          <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+          <ScalarProperty Name="MaPQ" ColumnName="MaPQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

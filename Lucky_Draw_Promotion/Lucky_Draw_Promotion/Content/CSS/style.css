@@ -1,17 +1,23 @@
 
 
-select {
+    select {
     margin-bottom: 1em;
-    padding: .25em;
+    /*padding: .25em;*/
     border: 0;
     border-bottom: 2px solid currentcolor;
-    font-weight: bold;
-    letter-spacing: .15em;
+    /*font-weight: bold;*/
+    /*letter-spacing: .15em;*/
     border-radius: 0;
-} 
-    
-select:focus, select:active {
-    outline: 0;
-    border-bottom-color: red;
-}
+    width:250px;
+    }
+
+    select:focus, select:active {
+        outline: 0;
+        border-bottom-color: red;
+     
+    }
+    /*.selectbox {
+        padding:14px 16px;
+        display:inline-block;
+    }*/
 

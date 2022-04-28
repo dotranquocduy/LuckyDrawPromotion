@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LucKyDrawPromotionDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Campaign">
+    <Key>
+      <PropertyRef Name="MaCampaign" />
+    </Key>
+    <Property Name="MaCampaign" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CampaignName" Type="nvarchar" MaxLength="1000" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Scanned" Type="int" />
+    <Property Name="UsedForSpin" Type="int" />
+    <Property Name="Winner" Type="int" />
+    <Property Name="IsPartipate" Type="bit" />
+    <Property Name="descriptionCA" Type="nvarchar" MaxLength="1000" />
+    <Property Name="CampaignCode" Type="nvarchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChucVu">
+    <Key>
+      <PropertyRef Name="MaCV" />
+    </Key>
+    <Property Name="MaCV" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="TenCV" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="CodeQR">
+    <Key>
+      <PropertyRef Name="MaCode" />
+    </Key>
+    <Property Name="MaCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameCodeQR" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="ExpiredDate" Type="datetime" />
+    <Property Name="usage" Type="int" />
+    <Property Name="QRCount" Type="int" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Scanned" Type="bit" />
+    <Property Name="MaCampaign" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="isWinPrize" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gift">
+    <Key>
+      <PropertyRef Name="MaGift" />
+    </Key>
+    <Property Name="MaGift" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameGift" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Probability" Type="float" Nullable="false" />
+    <Property Name="RuleName" Type="nvarchar" MaxLength="1000" />
+    <Property Name="GiftCode" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="scheldule" Type="nvarchar" MaxLength="1000" />
+    <Property Name="StartTime" Type="nvarchar" MaxLength="1000" />
+    <Property Name="EndTime" Type="nvarchar" MaxLength="1000" />
+    <Property Name="usage" Type="bit" Nullable="false" />
+    <Property Name="GiftCount" Type="int" Nullable="false" />
+    <Property Name="MaCampaign" Type="int" />
+    <Property Name="ProductId" Type="int" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="MaPQ" />
+    </Key>
+    <Property Name="MaPQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenCV" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="details" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="userAccount">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenUser" Type="nvarchar" MaxLength="1000" />
+    <Property Name="email" Type="nvarchar" MaxLength="1000" />
+    <Property Name="sdt" Type="char" MaxLength="10" />
+    <Property Name="ngaysinh" Type="datetime" />
+    <Property Name="pass" Type="nvarchar" MaxLength="1000" />
+    <Property Name="repass" Type="nvarchar" MaxLength="1000" />
+    <Property Name="LoaiHinhKD" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IsActiveBox" Type="bit" Nullable="false" />
+    <Property Name="MaCV" Type="varchar" MaxLength="255" />
+    <Property Name="MaPQ" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__CodeQR__MaCampai__1ED998B2">
+    <End Role="Campaign" Type="Self.Campaign" Multiplicity="1" />
+    <End Role="CodeQR" Type="Self.CodeQR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Campaign">
+        <PropertyRef Name="MaCampaign" />
+      </Principal>
+      <Dependent Role="CodeQR">
+        <PropertyRef Name="MaCampaign" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CodeQR__UserId__1FCDBCEB">
+    <End Role="userAccount" Type="Self.userAccount" Multiplicity="1" />
+    <End Role="CodeQR" Type="Self.CodeQR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userAccount">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="CodeQR">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Gift__MaCampaign__1DE57479">
+    <End Role="Campaign" Type="Self.Campaign" Multiplicity="0..1" />
+    <End Role="Gift" Type="Self.Gift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Campaign">
+        <PropertyRef Name="MaCampaign" />
+      </Principal>
+      <Dependent Role="Gift">
+        <PropertyRef Name="MaCampaign" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Gift__ProductId__20C1E124">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Gift" Type="Self.Gift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Gift">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userAccoun__MaCV__1BFD2C07">
+    <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
+    <End Role="userAccount" Type="Self.userAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChucVu">
+        <PropertyRef Name="MaCV" />
+      </Principal>
+      <Dependent Role="userAccount">
+        <PropertyRef Name="MaCV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userAccoun__MaPQ__1CF15040">
+    <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="1" />
+    <End Role="userAccount" Type="Self.userAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanQuyen">
+        <PropertyRef Name="MaPQ" />
+      </Principal>
+      <Dependent Role="userAccount">
+        <PropertyRef Name="MaPQ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LucKyDrawPromotionDBModelStoreContainer">
+    <EntitySet Name="Campaign" EntityType="Self.Campaign" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChucVu" EntityType="Self.ChucVu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CodeQR" EntityType="Self.CodeQR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gift" EntityType="Self.Gift" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userAccount" EntityType="Self.userAccount" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CodeQR__MaCampai__1ED998B2" Association="Self.FK__CodeQR__MaCampai__1ED998B2">
+      <End Role="Campaign" EntitySet="Campaign" />
+      <End Role="CodeQR" EntitySet="CodeQR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CodeQR__UserId__1FCDBCEB" Association="Self.FK__CodeQR__UserId__1FCDBCEB">
+      <End Role="userAccount" EntitySet="userAccount" />
+      <End Role="CodeQR" EntitySet="CodeQR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Gift__MaCampaign__1DE57479" Association="Self.FK__Gift__MaCampaign__1DE57479">
+      <End Role="Campaign" EntitySet="Campaign" />
+      <End Role="Gift" EntitySet="Gift" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Gift__ProductId__20C1E124" Association="Self.FK__Gift__ProductId__20C1E124">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Gift" EntitySet="Gift" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userAccoun__MaCV__1BFD2C07" Association="Self.FK__userAccoun__MaCV__1BFD2C07">
+      <End Role="ChucVu" EntitySet="ChucVu" />
+      <End Role="userAccount" EntitySet="userAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userAccoun__MaPQ__1CF15040" Association="Self.FK__userAccoun__MaPQ__1CF15040">
+      <End Role="PhanQuyen" EntitySet="PhanQuyen" />
+      <End Role="userAccount" EntitySet="userAccount" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,130 @@
+﻿@model Lucky_Draw_Promotion.Models.userAccount
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutLandingPage.cshtml";
+}
+<style>
+
+    input[type=text], input[type=password], input[type=number], input[type=date] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid dodgerblue;
+        box-sizing: border-box;
+    }
+
+
+</style>
+
+<form class="login100-form validate-form" action="" method="post">
+    <span class="login100-form-title" style="font-weight:bold;">
+        Register User
+    </span>
+
+    <div class="wrap-input100 validate-input" data-validate="Valid Name is required: abcd">
+        @Html.DisplayFor(model =>model.TenUser, new { @class = "control-label col-md-2" })
+        <input class="input100" type="text" name="TenUser" placeholder="Name">
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate="Valid email is required: abc@gmail.com">
+        @Html.DisplayFor(model => model.email, new { @class = "control-label col-md-2" })
+        <input class="input100" type="text" name="email" placeholder="email">
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate="Valid number is required">
+        @Html.DisplayFor(model => model.sdt, new { @class = "control-label col-md-2" })
+        <input class="input100" type="number" name="sdt" placeholder="NumberPhone">
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate="Valid birthday is required">
+        @Html.DisplayFor(model => model.ngaysinh, new { @class = "control-label col-md-2" })
+        <input class="input100" type="date" name="ngaysinh" max="" placeholder="Birthday">
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+    </div>
+
+
+
+    <div class="wrap-input100 validate-input" data-validate="Password is required">
+        @Html.DisplayFor(model => model.pass, new { @class = "control-label col-md-2" })
+        <input class="input100" type="password" name="pass" placeholder="Password">
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </span>
+    </div>
+
+    
+    <div class="wrap-input100">
+        <label>
+            <input type="checkbox" checked   id="myCheck" name="IsActive"> Tôi xác nhận tôi trên 16 tuổi
+        </label>
+    </div>
+    <div class="wrap-input100">
+        <label>
+            <input type="checkbox" checked  id="myCheck" name="IsActive"> Tôi đồng ý các thông tin khuyến mãi khách hàng
+        </label>
+    </div>
+    <div class="wrap-input100">
+        <label>
+            <input type="checkbox" checked   id="myCheck"  name="IsActive"> Tôi đã đọc thông báo về quyền riêng tư unilever <a href="" style="color:rebeccapurple;">Tại đây</a>
+        </label>
+    </div>
+
+    <div class="container-login100-form-btn">
+        <input style="display:none" name="urlString" value="@Request.UrlReferrer" />
+        <button class="login100-form-btn" type="submit" value="Đăng ký">
+            Register now
+        </button>
+    </div>
+  
+</form>
+<div class="text-center p-t-40">
+    <a class="txt2" href="/AuthenticationUsers/Login">
+        Login your Account
+        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+
+
+<script>
+    $(function () {
+        $('[type="date"]').prop('max', function () {
+            return new Date().toJSON().split('T')[0];
+        });
+    });
+    @*$(document).ready(function () {
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).prop("checked") == true) {
+               // console.log("Checkbox is checked.");
+                  $(this).val(true);
+               @Url.Action("AuthenticationUsers", "Register", new { @IsChecked = true })
+            }
+            else if ($(this).prop("checked") == false) {
+              //  console.log("Checkbox is unchecked.");
+                $(this).val(false);
+           @Url.Action("AuthenticationUsers", "Register", new { @IsChecked = false })
+            }
+        });
+    });*@
+
+
+
+</script>

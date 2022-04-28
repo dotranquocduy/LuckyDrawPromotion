@@ -10,14 +10,13 @@ form {
    
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=number], input[type=datetime]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 2px solid dodgerblue;
     box-sizing: border-box;
-  
 }
 
 button {

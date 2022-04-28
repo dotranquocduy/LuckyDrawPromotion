@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_LayoutaAdminCMS.cshtml";
+}
+
+
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        /*border-bottom: 3px solid #3864b3;*/
+        border: 1px solid #3864b3;
+    }
+
+    td, th {
+        border: 1px solid #3864b3;
+        text-align: left;
+        padding: 8px;
+    }
+</style>
+<script>
+    const button = document.querySelector("#button");
+    const select = document.querySelector('#drpdown');
+    const options = document.querySelectorAll(".option");
+    const selectLabel = document.querySelector('#select-label');
+
+    button.addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleHidden();
+    });
+
+    function toggleHidden() {
+        select.classList.toggle("hidden");
+    }
+
+    options.forEach(function (option) {
+        option.addEventListener("click", function (e) {
+            setSelectTitle(e);
+        });
+    });
+
+    function setSelectTitle(e) {
+        const labelElement = document.querySelector(`label[for="${e.target.id}"]`).innerText;
+        selectLabel.innerText = labelElement;
+        toggleHidden();
+    };
+
+</script>
+
+<div class="navmenu">
+    <a class="drawing" href="@Url.Action("Customers","Customer")"><i class="fa-solid fa-cubes" style="font-size:25px;padding-right:5px;"></i>Customers</a>
+
+
+
+</div>
+
+<div class="navmenu2">
+    <div class="selectbox" style="padding:14px 25px;display:inline-block;">
+        <select id="selectbox" data-selected="" class="selectbox" style="padding:14px;">
+            <option value="" selected="selected" disabled="disabled">Match all filter</option>
+            <option value="1">Ocean Wall</option>
+            <option value="2">Skate Park</option>
+            <option value="3">Mountain View</option>
+            <option value="4">Cityscape</option>
+            <option value="5">Workshop</option>
+        </select>
+    </div>
+
+    <div class="selectbox" style="padding:14px 25px;display:inline-block;">
+        <select id="selectbox" data-selected="" class="selectbox" style="padding:14px;">
+            <option value="" selected="selected" disabled="disabled">Search criteria</option>
+            <option value="1">Ocean Wall</option>
+            <option value="2">Skate Park</option>
+            <option value="3">Mountain View</option>
+            <option value="4">Cityscape</option>
+            <option value="5">Workshop</option>
+        </select>
+    </div>
+
+    <div class="selectbox" style="padding:14px 25px;display:inline-block;">
+        <select id="selectbox" data-selected="" class="selectbox" style="padding:14px;">
+            <option value="" selected="selected" disabled="disabled">Codition</option>
+            <option value="1">Ocean Wall</option>
+            <option value="2">Skate Park</option>
+            <option value="3">Mountain View</option>
+            <option value="4">Cityscape</option>
+            <option value="5">Workshop</option>
+        </select>
+    </div>
+
+    <div class="selectbox" style="padding:14px 25px;display:inline-block;">
+        <select id="selectbox" data-selected="" class="selectbox" style="padding:14px;">
+            <option value="" selected="selected" disabled="disabled">Value</option>
+            <option value="1">Ocean Wall</option>
+            <option value="2">Skate Park</option>
+            <option value="3">Mountain View</option>
+            <option value="4">Cityscape</option>
+            <option value="5">Workshop</option>
+        </select>
+    </div>
+
+    <div style="display:inline-block;float:right;">
+        <button style="background: url(/Content/images/buttonAdd.png);height:40px;min-width:100px;background-repeat:no-repeat;border:none;cursor:pointer;"></button>
+    </div>
+
+    <div style="display:inline-block;float:right;clear:both;">
+
+        <button style="background: url(/Content/images/buttonReload.png);height:40px;min-width:105px;background-repeat:no-repeat;border:none;cursor:pointer;"></button>
+        <p style="font-style:italic;float:left;padding-right:10px;margin-top:10px;">2 entries match</p>
+    </div>
+
+</div>
+
+<div class="navmenu2">
+    <table class="fill">
+        <tr>
+            <th>STT</th>
+            <th>Name<i class="fa-solid fa-caret-down"></i></th>
+            <th>Phone Number</th>
+            <th>Date of Birth</th>
+            <th>Position</th>
+            <th>Type of Bussiness</th>
+            <th>Location</th>
+            <th>Block</th>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>1</td>
+            <td>Griffin</td>
+            <td>123456789</td>
+            <td>hcm</td>
+            <td>Griffin</td>
+            <td>cntt</td>
+            <td>hcm</td>
+            <td><input type="checkbox" style="width:100%;" /></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Griffin</td>
+            <td>123456789</td>
+            <td>hcm</td>
+            <td>Griffin</td>
+            <td>cntt</td>
+            <td>hcm</td>
+            <td><input type="checkbox" style="width:100%;" /></td>
+        </tr>
+    </table>
+</div>
+
+<script src="~/Content/JS/main.js"></script>

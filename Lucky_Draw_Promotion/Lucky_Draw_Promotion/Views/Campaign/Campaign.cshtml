@@ -33,25 +33,68 @@
 </script>
 
 <div class="navmenu">
-    <a class="drawing" href="@Url.Action("Campaign","Campaign")"><i class="fa fa-fw fa-home" style="font-size:25px;padding-right:5px;"></i>Campaigns</a>
+    <a class="drawing" href="@Url.Action("Campaign","Campaign")"><i class="fa-solid fa-tags" style="font-size:25px;padding-right:5px;"></i>Campaigns</a>
 
-
-    <i class="fa-solid fa-circle-plus insert iconView" style="float:right;cursor:pointer;font-size:30px;color:#c55a11;"></i>
+    
+    <a href="@Url.Action("CreateCampaigns","Campaign")"><i class="fa-solid fa-circle-plus insert iconView" style="float:right;cursor:pointer;font-size:30px;color:#c55a11;"></i></a>
+   
 </div>
 
 <div class="navmenu2">
+    <div class="selectbox" style="padding:14px 25px;display:inline-block;">
+        <select id="selectbox" data-selected="" class="selectbox" style="padding:14px;">
+            <option value="" selected="selected" disabled="disabled">Match all filter</option>
+            <option value="1">Ocean Wall</option>
+            <option value="2">Skate Park</option>
+            <option value="3">Mountain View</option>
+            <option value="4">Cityscape</option>
+            <option value="5">Workshop</option>
+        </select>
+    </div>
 
-    <select id="selectbox" data-selected="">
-        <option value="" selected="selected" disabled="disabled">Select an image</option>
-        <option value="1">Ocean Wall</option>
-        <option value="2">Skate Park</option>
-        <option value="3">Mountain View</option>
-        <option value="4">Cityscape</option>
-        <option value="5">Workshop</option>
-    </select>
+    <div class="selectbox" style="padding:14px 25px;display:inline-block;">
+        <select id="selectbox" data-selected="" class="selectbox" style="padding:14px;">
+            <option value="" selected="selected" disabled="disabled">Search criteria</option>
+            <option value="1">Ocean Wall</option>
+            <option value="2">Skate Park</option>
+            <option value="3">Mountain View</option>
+            <option value="4">Cityscape</option>
+            <option value="5">Workshop</option>
+        </select>
+    </div>
 
+    <div class="selectbox" style="padding:14px 25px;display:inline-block;">
+        <select id="selectbox" data-selected="" class="selectbox" style="padding:14px;">
+            <option value="" selected="selected" disabled="disabled">Codition</option>
+            <option value="1">Ocean Wall</option>
+            <option value="2">Skate Park</option>
+            <option value="3">Mountain View</option>
+            <option value="4">Cityscape</option>
+            <option value="5">Workshop</option>
+        </select>
+    </div>
 
+    <div class="selectbox" style="padding:14px 25px;display:inline-block;">
+        <select id="selectbox" data-selected="" class="selectbox" style="padding:14px;">
+            <option value="" selected="selected" disabled="disabled">Value</option>
+            <option value="1">Ocean Wall</option>
+            <option value="2">Skate Park</option>
+            <option value="3">Mountain View</option>
+            <option value="4">Cityscape</option>
+            <option value="5">Workshop</option>
+        </select>
+    </div>
 
+    <div style="display:inline-block;float:right;">
+        <button style="background: url(/Content/images/buttonAdd.png);height:40px;min-width:100px;background-repeat:no-repeat;border:none;cursor:pointer;"></button>
+    </div>
+    
+    <div style="display:inline-block;float:right;clear:both;">
+
+        <button style="background: url(/Content/images/buttonReload.png);height:40px;min-width:105px;background-repeat:no-repeat;border:none;cursor:pointer;"></button>
+        <p style="font-style:italic;float:left;padding-right:10px;margin-top:10px;">2 entries match</p>
+    </div>
+    
 </div>
 
 <div class="navmenu2">
@@ -67,26 +110,30 @@
             <th>Win</th>
         </tr>
         <tr></tr>
-        <tr>
-            <td>Peter</td>
-            <td>Griffin</td>
-            <td>$100</td>
-            <td>Peter</td>
-            <td>Griffin</td>
-            <td>$100</td>
-            <td>Peter</td>
-            <td>Griffin</td>
-        </tr>
-        <tr>
-            <td>Peter</td>
-            <td>Griffin</td>
-            <td>$100</td>
-            <td>Peter</td>
-            <td>Griffin</td>
-            <td>$100</td>
-            <td>Peter</td>
-            <td>Griffin</td>
-        </tr>
+        @{int count = 1;}
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    <a style="padding:10px;" href="#"><i class="fa-solid fa-unlock-keyhole"></i>Lucky Draw @count</a>
+                    @*<a style="display:flex;margin-left:80px;padding:5px;text-decoration:none;" href="#"><i class="fa-solid fa-paper-plane"></i>Active</a>*@
+                </td>
+                <td>
+                    <p style="">@item.StartDate</p>
+                </td>
+                <td>@item.EndDate</td>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td>@item.Scanned</td>
+                <td>@item.UsedForSpin</td>
+                <td>@item.Winner</td>
+            </tr>
+
+            count++;
+
+
+        }
     </table>
 </div>
 

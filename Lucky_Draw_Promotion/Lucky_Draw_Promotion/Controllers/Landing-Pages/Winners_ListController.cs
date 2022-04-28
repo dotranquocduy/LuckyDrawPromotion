@@ -9,7 +9,7 @@ namespace Lucky_Draw_Promotion.Controllers.Landing_Pages
     public class Winners_ListController : Controller
     {
         // GET: Winners_List
-        public ActionResult Index()
+        public ActionResult WinnerListPage()
         {
             return View();
         }

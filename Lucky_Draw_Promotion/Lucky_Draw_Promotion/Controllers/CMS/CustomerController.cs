@@ -9,7 +9,7 @@ namespace Lucky_Draw_Promotion.Controllers.CMS
     public class CustomerController : Controller
     {
         // GET: Customer
-        public ActionResult Index()
+        public ActionResult Customers()
         {
             return View();
         }

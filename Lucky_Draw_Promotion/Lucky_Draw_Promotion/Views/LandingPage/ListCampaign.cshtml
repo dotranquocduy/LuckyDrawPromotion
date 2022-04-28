@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "ListCampaign";
+    Layout = "~/Views/Shared/_LayoutRenderLanding.cshtml";
+}
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container_class {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*height: 100vh;*/
+    }
+
+        .container_class ul li {
+            /*width: 200px;*/
+            /*height: 35px;*/
+            display: flex;
+            align-items: center;
+            margin: 2.5em;
+            cursor: pointer;
+            padding: 1em;
+            background: rgb(43, 43, 43);
+            position: relative;
+            color: white;
+            border-radius: 5px;
+        }
+
+            .container_class ul li::before,
+            .container_class ul li::after {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                border-radius: 5px;
+                width: 105%;
+                transition: all .4s;
+            }
+
+            .container_class ul li::before {
+                left: 0%;
+                height: 130%;
+                background: linear-gradient(to right, #021B79, #0575E6);
+            }
+
+            .container_class ul li::after {
+                left: -10%;
+                height: 120%;
+                background: #ffffff56;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.164);
+            }
+
+            .container_class ul li:hover::before {
+                transform: translateX(-2.5%);
+            }
+
+            .container_class ul li:hover::after {
+                transform: translateX(15%);
+            }
+
+    ul {
+        width: 100%;
+    }
+</style>
+
+    @foreach (var item in Model)
+    {
+
+        <div class="container_class">
+            <ul>
+                @if (DateTime.Today >= item.StartDate && DateTime.Today <= item.EndDate)
+                {
+                    <a href="@Url.Action("LandingPageHome","LandingPage", new {@id = item.MaCampaign })" style="text-decoration:none;"><li>@item.CampaignName</li></a>
+                }
+            </ul>
+        </div>
+
+    }
+

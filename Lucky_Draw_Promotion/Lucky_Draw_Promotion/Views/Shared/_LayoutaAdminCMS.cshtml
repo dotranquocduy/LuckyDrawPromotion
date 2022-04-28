@@ -29,13 +29,13 @@
 
             </button>
             <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+                <a href="@Url.Action("GeneratedGifts","Gifts")">Generated Gifts</a>
+                <a href="@Url.Action("GiftsCategory","Gifts")">Gifts Category</a>
+                <a href="@Url.Action("ImportGifts","Gifts")">Import Gifts</a>
             </div>
 
         </div>
-        <a class="Mybtn" href="@Url.Action("Customer","Customer")"><i class="fa-solid fa-user" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Customer</div></a>
+        <a class="Mybtn" href="@Url.Action("Customers","Customer")"><i class="fa-solid fa-user" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Customer</div></a>
         <a class="Mybtn" href="#Setting"><i class="fa-solid fa-gear" style="margin-left:auto;margin-right:auto;font-size:20px;"></i><div>Setting</div></a>
         <div class="search-container">
             <form action="">
@@ -47,10 +47,26 @@
 
 
     <div class="navtag">
-        <a class="link active" href="@Url.Action("Dashboard","Dashboard")"><i class="fa fa-fw fa-home" style="font-size:16px;padding-right:5px;"></i>Dashboard</a>
-        <a class="" href="" style="padding-left:20px;text-decoration:none;">@ViewBag.Title</a>
-        <a class="" href="" style="padding-left:20px;text-decoration:none;"></a>
+        @if (ViewBag.Title != null && ViewBag.item != null)
+        {
+            <a class="link active" href="@Url.Action("Dashboard","Dashboard")"><i class="fa fa-fw fa-home" style="font-size:16px;padding-right:5px;"></i>Dashboard</a>
+            <a class="link active" href="" style="padding-left:20px;text-decoration:none;">@ViewBag.Title</a>
+            <a class="" href="" style="padding-left:20px;text-decoration:none;">@ViewBag.item</a>
+        }
 
+        else
+        {
+            if (ViewBag.Title != null && ViewBag.item == null)
+            {
+                <a class="link active" href="@Url.Action("Dashboard","Dashboard")"><i class="fa fa-fw fa-home" style="font-size:16px;padding-right:5px;"></i>Dashboard</a>
+                <a class="" href="" style="padding-left:20px;text-decoration:none;">@ViewBag.Title</a>
+            }
+            else
+            {
+                <a class="link active" href="@Url.Action("Dashboard","Dashboard")"><i class="fa fa-fw fa-home" style="font-size:16px;padding-right:5px;"></i>Dashboard</a>
+            }
+
+        }
     </div>
     @RenderBody()
 

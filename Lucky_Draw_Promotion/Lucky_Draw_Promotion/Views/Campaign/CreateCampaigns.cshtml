@@ -1,0 +1,1116 @@
+﻿@model Lucky_Draw_Promotion.Models.CampaignGiftFullModelClass
+@using Lucky_Draw_Promotion.Models;
+@{
+    ViewBag.item = "CreateCampaigns";
+    Layout = "~/Views/Shared/_LayoutaAdminCMS.cshtml";
+
+
+
+}
+
+
+
+
+
+<style>
+    /*campaign create css */
+    /* Style the buttons */
+
+    #choiceDIV {
+        padding: 14px 16px;
+    }
+
+    .choicebtn {
+        border: none;
+        outline: none;
+        padding: 10px 16px;
+        background-color: #fff;
+        cursor: pointer;
+        font-size: 18px;
+        display: grid;
+        margin-bottom: 16px;
+        border: 2px solid #3864b3;
+        margin-top: -10px;
+        margin-right: 16px;
+    }
+
+        /* Style the active class, and buttons on mouse-over */
+        .active2, .choicebtn:hover {
+            background-color: #3864b3;
+            color: white;
+        }
+
+
+    .left {
+        float: left;
+        width: 70%;
+        padding-bottom: 40px;
+    }
+
+    .right {
+        float: right;
+        width: 30%;
+    }
+
+    .drawing2 {
+        font-weight: bold;
+        font-size: 18px;
+        padding-right: 5px;
+        display: flex;
+    }
+
+    .hide {
+        display: none
+    }
+
+    .active2_name {
+        color: #3864b3;
+    }
+
+    .line {
+        display: inline-block;
+        padding: 15px 160px;
+        font-size: 23px;
+        font-weight: bold;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /**/
+    .input_text {
+        outline: none;
+        border: none;
+    }
+
+
+    .boxclass {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+    }
+
+        .boxclass h1 {
+            color: #445a94;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+    .wrap2 {
+        width: 98%;
+        position: relative;
+        border-bottom: 2px solid #b2b2b2;
+        margin-bottom: 13px;
+        display: inline-block;
+    }
+
+    .wrap {
+        width: 100%;
+        /*display: flex;*/
+        justify-content: center;
+    }
+
+    .f1 {
+        border-bottom: 2px solid #b2b2b2;
+        width: 68%;
+        position: relative;
+        display: inline-block;
+    }
+
+    .f1_v2 {
+        width: 68%;
+        position: relative;
+        display: inline-block;
+    }
+
+    .f1_v3 {
+        border-bottom: 2px solid #b2b2b2;
+        /*width: 68%;*/
+        width: 40%;
+        margin-right: 49px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .f0 {
+        width: 30%;
+        position: relative;
+        display: inline-block;
+    }
+
+    .f3 {
+        border-bottom: 2px solid #b2b2b2;
+        width: 33.5%;
+        position: relative;
+        display: inline-block;
+    }
+
+    .f4 {
+        border-bottom: 2px solid #b2b2b2;
+        width: 31.5%;
+        position: relative;
+        display: inline-block;
+        padding-right: 10px;
+    }
+
+    .f5 {
+        border-bottom: 2px solid #b2b2b2;
+        width: 30%;
+        position: relative;
+        display: inline-block;
+    }
+
+    /*.f2 {
+        border-bottom: 2px solid #b2b2b2;
+        margin-left: auto;
+        width: 140%;
+        position: relative;
+    }*/
+
+    .labelname {
+        font-size: 12px;
+        color: #676768;
+        line-height: 1.5;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-width: 25px;
+        border-bottom: none;
+        padding: 15px 0px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        padding-bottom: 2px;
+        font-weight: bold;
+    }
+
+    .input_text {
+        display: block;
+        width: 100%;
+        font-size: 18px;
+        background: transparent;
+        color: #0f0f0f;
+        font-weight: 500;
+        padding: 10px 0px;
+    }
+
+
+    /*span animation (chuyen dong span)*/
+    .focus-input {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+    }
+
+        .focus-input::before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 0;
+            left: 0;
+            bottom: -1px;
+            height: 2px;
+            transition: all 0.6s;
+            background: #412277;
+        }
+
+    .input_text:focus + .focus-input::before {
+        width: 100%;
+    }
+
+
+    .has-val.input_text + .focus-input::before {
+        width: 100%;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        border: 2px solid black;
+        background-color: #ccc;
+    }
+
+    /* The checkclass */
+    .checkclass {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default checkbox */
+        .checkclass .check_input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #676768;
+        margin-left: 30px;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .checkclass:hover .check_input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .checkclass .check_input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .checkclass .check_input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .checkclass .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .filler {
+        background-color: black;
+        color: white;
+        font-size: 15px;
+        padding: 12px;
+        width: 35%;
+        right: auto;
+        margin-left: 220px;
+    }
+    /* modal page class*/
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 200px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+    }
+
+    /* The Close Button */
+    .closebtn {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .closebtn:hover,
+        .closebtn:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        border-bottom: 3px solid #3864b3;
+        border-top: 3px solid #3864b3;
+    }
+
+    td, th {
+        border: 1px solid #3864b3;
+        text-align: left;
+        padding: 8px;
+    }
+
+
+    /* The container */
+    .labelnameradio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding-bottom: 15px;
+    }
+
+    .checkmarkradio {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+        border: 1px solid orangered;
+    }
+    /* Hide the browser's default radio button */
+    .labelnameradio .input_radio {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* Create a custom radio button */
+
+
+    /* On mouse-over, add a grey background color */
+    .labelnameradio:hover .input_radio ~ .checkmarkradio {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .labelnameradio .input_radio:checked ~ .checkmarkradio {
+        background-color: #2196F3;
+    }
+
+
+
+        /* Show the indicator (dot/circle) when checked */
+        .labelnameradio .input_radio:checked ~ .checkmarkradio:after {
+            display: block;
+        }
+
+    /* Style the indicator (dot/circle) */
+    .labelnameradio .checkmarkradio:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .checkmarkradio:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .event {
+        pointer-events: none;
+        color: #b2b2b2;
+    }
+</style>
+
+
+
+<div class="navmenu">
+
+    <a class="drawing" href="@Url.Action("Campaign","Campaign")"><i class="fa-solid fa-tags" style="font-size:25px;padding-right:5px;"></i>Create New Campaign</a>
+
+
+
+</div>
+
+@using (Html.BeginForm("CreateCampaigns", "Campaign", FormMethod.Post))
+{
+
+    <div class="left">
+        <div class="filterDiv 1">
+            <p class="drawing2" style="color:#3864b3;font-size:25px;margin-left:15px;">1.Program Size</p>
+            <div class="navmenu2">
+                <div class="line">
+                    <input type="radio" id="html" name="code" value="bulk" style="height:15px; width:15px;" checked>
+                    <label for="bulk">Bulk codes</label><br>
+                </div>
+                <div class="line">
+                    <input type="radio" id="css" name="code" value="standalone" style="height:15px; width:15px;">
+                    <label for="standalone">Standalone code</label><br>
+                </div>
+            </div>
+
+            <div class="navmenu2">
+
+                <div class="boxclass" action="" method="" style="padding-bottom:20px;">
+
+                    <div class="wrap">
+
+                        <div class="f1">
+                            <label class="labelname">Programe name *</label>
+                            @Html.DisplayFor(model => model.Campaign.CampaignName, new { @class = "control-label col-md-2" })
+                            <input type="text" name="CampaignName" id="CampaignName" class="input_text">
+                            <span class="focus-input"></span>
+                        </div>
+                        <div class="f0">
+                            <label class="checkclass" style="color:#676768;">
+                                Auto Update
+                                <input type="checkbox" class="check_input">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        @*<div class="f2">
+                                <label class="labelname">Two  </label>
+                                    <input type="checkbox" class="input_text">
+                                    <span class="focus-input"></span>
+
+                            </div>*@
+                    </div>
+
+                    <div class="wrap" style="display:table-cell;padding-top:15px;">
+
+                        <div class="f0" style="width:auto;">
+                            <label class="checkclass" style="color:#676768;">
+                                <div style="margin-left:50px;">Customers will be allowed to join campaign only one</div>
+                                <input type="checkbox" class="check_input">
+                                <span class="checkmark" style="margin-left:auto;"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="wrap2">
+                        <label class="labelname">Description</label>
+                        @Html.DisplayFor(model => model.Campaign.descriptionCA, new { @class = "control-label col-md-2" })
+                        <input type="text" name="descriptionCA" id="descriptionCA" class="input_text">
+                        <span class="focus-input"></span>
+                    </div>
+
+                    <div class="wrap">
+                        <div class="f3">
+                            <label class="labelname">Code Usage limit</label>
+                            <input type="text" name="" class="input_text" placeholder="" value="1">
+                            <span class="focus-input"></span>
+                        </div>
+                        <div class="f0">
+                            <label class="checkclass" style="color:#676768;font-size:18px;">
+                                Unlimited
+                                <input type="checkbox" class="check_input">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="f3">
+                            <label class="labelname">Code Count*</label>
+                            @Html.DisplayFor(model => model.Gift.GiftCount, new { @class = "control-label col-md-2" })
+                            <input type="text" name="CodeCount"  id="CodeCount" class="input_text" value="1">
+                            <span class="focus-input"></span>
+                        </div>
+                    </div>
+
+                    <div class="wrap">
+                        <div class="f5">
+                            <label class="labelname">Charset</label>
+                            @*<input type="number" name="" class="input_text" placeholder="Numbers">*@
+                            <select class="input_text">
+                                <option value="Number">Number</option>
+                                <option value="Word">Word</option>
+                                <option value="alphanumeric">alphanumeric</option>
+                            </select>
+                            <span class="focus-input"></span>
+                        </div>
+                        <div class="f1_v2">
+                            <input type="text" name="" class="input_text" style="border-bottom-style: dashed;border-bottom-color:grey;" placeholder="123456789" disabled>
+
+                        </div>
+                    </div>
+
+                    <div class="wrap">
+                        <div class="f4">
+                            <label class="labelname">Code length</label>
+                            @Html.DisplayFor(model => model.CodeLength, new { @class = "control-label col-md-2" })
+                            <input type="text" name="CodeLength" id="CodeLength" class="input_text" placeholder="" value="10">
+                            <span class="focus-input"></span>
+                        </div>
+                        <div class="f4">
+                            <label class="labelname">Prefix</label>
+                            @Html.DisplayFor(model => model.Prefix, new { @class = "control-label col-md-2" })
+                            <input type="text" name="Prefix" id="Prefix" class="input_text" placeholder="" value="ATLA">
+                            <span class="focus-input"></span>
+                        </div>
+                        <div class="f4">
+                            <label class="labelname">Postfix</label>
+                            @Html.DisplayFor(model => model.Postfix, new { @class = "control-label col-md-2" })
+                            <input type="text" name="Postfix" id="Postfix" class="input_text">
+                            <span class="focus-input"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="filterDiv 2 hide">
+            <p class="drawing2" style="color:#3864b3;font-size:25px;margin-left:15px;">2.Timeframe</p>
+            <div class="navmenu2">
+                <div class="wrap">
+
+                    <div style="padding:14px 16px;">
+                        <label class="labelname">Start date*</label>
+                        <div class="f1_v3">                    
+                            <input type="date" name="StartDay" id="StartDay" class="input_text" placeholder="Enter date">
+                            <span class="focus-input"></span>
+                        </div>
+                        <div class="f1_v3">                          
+                            <input type="time" name="StartTime" id="StartTime" class="input_text" placeholder="Enter time">
+                            <span class="focus-input"></span>
+                        </div>
+
+
+                    </div>
+
+                    <div style="padding:14px 16px;">
+                        <label class="labelname">End date*</label>
+                        <div class="f1_v3">
+ 
+                            <input type="date" name="EndDay" id="EndDay" class="input_text" placeholder="Enter date">
+                            <span class="focus-input"></span>
+                        </div>
+                        <div class="f1_v3">                      
+                            <input type="time" name="EndTime" id="EndTime" class="input_text" placeholder="Enter time">
+                            <span class="focus-input"></span>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="filterDiv 3 hide">
+            <p class="drawing2" style="color:#3864b3;font-size:25px;margin-left:15px;">3.Gifts</p>
+            <div class="navmenu2">
+                <div class="boxclass" action="" method="" style="padding-bottom:20px;">
+                    <div class="wrap2">
+                        @*@Html.DisplayFor(model => model.Gift.NameGift, new { @class = "control-label col-md-2" })*@
+                        <input type="text" name="NameGift" id="txtNameGift" class="input_text" placeholder="Select a product">
+                        <span class="focus-input"></span>
+                    </div>
+                    <div class="wrap2">
+                        @*@Html.DisplayFor(model => model.Gift.description, new { @class = "control-label col-md-2" })*@
+                        <input type="text" name="description" id="txtdescription" class="input_text" placeholder="Description">
+                        <span class="focus-input"></span>
+                    </div>
+                    <div class="wrap">
+                        <div class="f3" style="margin-left:7.5px;display:block;">
+                            <label class="labelname">Gift Code Count*</label>
+                            @*@Html.DisplayFor(model => model.Gift.GiftCount, new { @class = "control-label col-md-2" })*@
+                            <input type="text" name="" value="" id="txtCount" class="input_text" placeholder="5">
+                            <span class="focus-input"></span>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="left">
+                    <a href="#" style="padding: 14px 16px;display:none;" id="myBtnModal">View list of gifts code</a>
+                </div>
+                <div class="right" style="width:40%;font-weight:bold;font-size:18px;">
+                    <a href="#" style="padding: 14px 16px;" id="press1" onclick="myFunction()">Auto GenerateCodes</a>
+                    <a href="#" style="padding: 14px 16px;">Upload GiftsCodes</a>
+                    <a class="filler" id="AddGift" style="font-weight:normal;text-align:center;cursor:pointer;text-decoration:none;font-size:18px;display:grid;background-color:orangered;border:none;width:40%;margin-top:30px;">Add to Gifts List</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="filterDiv 4 hide">
+            <p class="drawing2" style="color:#3864b3;font-size:25px;margin-left:15px;">4.Rules for Gifts</p>
+            <div class="navmenu2">
+                <div class="wrap">
+                    <div class="f3">
+                        <label class="labelname">Rulename*</label>
+                        <input type="text" name="RuleName" class="input_text" id="RuleName">
+                        <span class="focus-input" style="border-bottom:1px solid;"></span>
+                    </div>
+                    <div class="f3">
+                        <label class="labelname">Selectgift*</label>
+                        <select class="input_text">
+                            @{ int count = 0;}
+                            @foreach (var item in (List<Gift>)ViewBag.lstGiftRulesName)
+                            {
+                                <option value="@item.NameGift" id="NameGiftRulesName">@item.NameGift</option>
+
+                                foreach (var item1 in (List<Product>)ViewBag.lstProducts)
+                                {
+                                    if (item.ProductId == item1.ProductId)
+                                    {
+                                        count = count + item.GiftCount;
+                                    }
+                                }
+                            }
+                            
+
+
+                        </select>
+                        <span class="focus-input" style="border-bottom:1px solid;"></span>
+                    </div>
+                    <div class="f5">
+                        <label class="labelname">Gift Count*</label>
+                        <input type="text" name="" class="input_text" value="@count" disabled>
+                        <span class="focus-input" style="border-bottom:1px solid;"></span>
+                    </div>
+                </div>
+                <div class="f0" style="padding-top:10px;padding-right:10px;width:20%;">
+                    <label class="labelname">Start time*</label>
+                    <a href="#"><i class="fa-solid fa-tags"></i>Enter time(s)</a>
+
+                </div>
+                <div class="f0" style="padding-top:10px;padding-right:10px;width:20%;">
+                    <label class="labelname">End time</label>
+                    <a href="#"><i class="fa-solid fa-tags"></i>Enter time(s)</a>
+                </div>
+                <div class="f0">
+                    <label class="checkclass" style="color:#676768;font-size:18px;margin-top:5px;margin-left:80px;">
+                        All day
+                        <input type="checkbox" class="check_input">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="f0" style="width:10%;display:inline-block;">
+                    <label class="labelname">Probability (%)</label>
+                    @Html.DisplayFor(model => model.Gift.Probability, new { @class = "control-label col-md-2" })
+                    <input type="text" id="Probability" name="Probability" placeholder="0">
+                </div>
+
+                <div class="wrap">
+                    <div class="left" style="width:50%;">
+                        <div class="f0" style="padding-top:10px;padding-right:10px;width:50%;">
+                            <label class="labelname">Repeat Schedule</label>
+                            <label class="labelnameradio">
+                                Montly on day
+                                <input type="radio" @*checked="checked"*@ name="" class="input_radio">
+                                <span class="checkmarkradio"></span>
+                            </label>
+                            <label class="labelnameradio">
+                                Weekly on
+                                <input type="radio" name="" class="input_radio">
+                                <span class="checkmarkradio"></span>
+                            </label>
+                            <label class="labelnameradio">
+                                Repeat daily
+                                <input type="radio" name="" class="input_radio">
+                                <span class="checkmarkradio"></span>
+                            </label>
+
+
+                        </div>
+                    </div>
+                    <div class="right" style="width:50%;">
+                        <div class="" style="padding-top:55px;padding-right:20px;">
+                            <a href="#" class="event"><i class="fa-solid fa-tags"></i>Select day(s)</a>
+                        </div>
+                        <div class="" style="padding-top:40px;padding-right:20px;">
+                            <div class="left"><a href="#" class="event"><i class="fa-solid fa-tags"></i>Select day(s)</a></div>
+                        </div>
+                        <div class="" style="padding-top:30px;padding-right:20px;">
+                            <div class="left" style="width:50%;"><a href="#" class="event"><i class="fa-solid fa-tags"></i>Start date(s)</a></div>
+                            <div class="right" style="width:50%;"><a href="#" class="event"><i class="fa-solid fa-tags"></i>End date(s)</a></div>
+                        </div>
+                    </div>
+                    <div class="right" style="width:40%;font-weight:bold;font-size:18px;">
+                        <a class="filler" id="AddRuleGifs" style="font-weight:normal;text-align:center;cursor:pointer;text-decoration:none;font-size:18px;display:grid;background-color:orangered;border:none;width:40%;margin-top:30px;">Add to Rule List</a>
+                    </div>
+
+                    <div class="navmenu3" style="padding-top:40px;">
+                        <table>
+                            <tr>
+                                <th>Rule namere</th>
+                                <th>Gift</th>
+                                <th>Schedule</th>
+                                <th>Time</th>
+                                <th>Total Gifts</th>
+                                <th>Probability(%)</th>
+                                <th>Priority</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>Alfreds Futterkiste</td>
+                                <td>Maria Anders</td>
+                                <td>Germany</td>
+                                <td>Germany</td>
+                                <td>Alfreds Futterkiste</td>
+                                <td>Maria Anders</td>
+                                <td>Germany</td>
+                                <td>Germany</td>
+                            </tr>
+                            <tr>
+                                <td>Laughing Bacchus Winecellars</td>
+                                <td>Yoshi Tannamuri</td>
+                                <td>Canada</td>
+                                <td>Canada</td>
+                                <td>Laughing Bacchus Winecellars</td>
+                                <td>Yoshi Tannamuri</td>
+                                <td>Canada</td>
+                                <td>Canada</td>
+                            </tr>
+                            <tr>
+                                <td>Magazzini Alimentari Riuniti</td>
+                                <td>Giovanni Rovelli</td>
+                                <td>Italy</td>
+                                <td>Italy</td>
+                                <td>Magazzini Alimentari Riuniti</td>
+                                <td>Giovanni Rovelli</td>
+                                <td>Italy</td>
+                                <td>Italy</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="filterDiv 5 hide">
+            <p class="drawing2" style="color:#3864b3;font-size:25px;margin-left:15px;">5.Summary</p>
+            <div class="navmenu2">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="right">
+        <p class="drawing" style="border-bottom:2px solid #224086;width:80%;">New Campaign</p>
+        <div id="choiceDIV">
+            <div><p class="drawing2"><a class="choicebtn active2" data-target="1">1</a>Program Size</p> <a class="filterDiv 1 filler" style="padding:12px 35px;">Next</a></div>
+            <div><p class="drawing2"><a class="choicebtn" data-target="2">2</a>Time frame</p>  <a class="filterDiv 2 hide filler" style="padding:12px 35px;">Next</a></div>
+            <div><p class="drawing2"><a class="choicebtn" data-target="3">3</a>Gifts</p>  <a class="filterDiv 3 hide filler" style="padding:12px 35px;">Next</a></div>
+            <div><p class="drawing2"><a class="choicebtn" data-target="4">4</a>Rules of gifts</p><a class="filterDiv 4 hide filler" style="padding:12px 35px;">Next</a></div>
+            <div><p class="drawing2"><a class="choicebtn" data-target="5">5</a>Summary</p> <a class="filterDiv 5 hide filler" style="padding:12px 35px;">Next</a></div>
+
+        </div>
+        <div style="border-bottom:2px solid #224086;width:90%;"></div>
+        <div class="left" style="padding-top:30px;">
+            <button class="filler" style="background-color:#b2b2b2;border:none;cursor:pointer;color:rgba(0,0,0,0.4);margin-left:auto;display:contents;">Cancel</button>
+        </div>
+        <div class="right" style="padding-top:25px;" id="right-submit">
+
+            <button hidden type="submit" id="Savedraft" class="filler" style="background-color:#3864b3;border:none;margin-left:-40px;cursor:pointer;color:white;width:100%;">Save draft</button>
+            <button hidden type="submit" id="Save" value="Save" name="submitButton" class="filler" style="background-color:#3864b3;border:none;margin-left:-40px;cursor:pointer;color:white;width:100%;">Save</button>
+        </div>
+
+
+    </div>
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="closebtn">&times;</span>
+            <p class="drawing2" style="color:#3864b3;font-size:25px;margin-left:15px;">List of Gift Codes</p>
+            <table>
+                <tr>
+                    <th>Company</th>
+                    <th>Contact</th>
+                    <th>Country</th>
+                    <th>Country</th>
+                </tr>
+                <tr>
+                    <td>Alfreds Futterkiste</td>
+                    <td>Maria Anders</td>
+                    <td>Germany</td>
+                    <td>Germany</td>
+                </tr>
+                <tr>
+                    <td>Centro comercial Moctezuma</td>
+                    <td>Francisco Chang</td>
+                    <td>Mexico</td>
+                    <td>Mexico</td>
+                </tr>
+                <tr>
+                    <td>Ernst Handel</td>
+                    <td>Roland Mendel</td>
+                    <td>Austria</td>
+                    <td>Austria</td>
+                </tr>
+                <tr>
+                    <td>Island Trading</td>
+                    <td>Helen Bennett</td>
+                    <td>UK</td>
+                    <td>UK</td>
+                </tr>
+                <tr>
+                    <td>Laughing Bacchus Winecellars</td>
+                    <td>Yoshi Tannamuri</td>
+                    <td>Canada</td>
+                    <td>Canada</td>
+                </tr>
+                <tr>
+                    <td>Magazzini Alimentari Riuniti</td>
+                    <td>Giovanni Rovelli</td>
+                    <td>Italy</td>
+                    <td>Italy</td>
+                </tr>
+            </table>
+
+
+        </div>
+
+    </div>
+            }
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+<script>
+
+    //thêm list program size 
+    $('#Savedraft').click(function (e) {
+         e.preventDefault(); // prevent default submit
+
+        var CampaignName = $("#CampaignName").val();
+        var descriptionCA = $("#descriptionCA").val()
+        var CodeCount = $("#CodeCount").val();
+        var CodeLength = $("#CodeLength").val();
+        var Prefix = $("#Prefix").val()
+        var Postfix = $("#Postfix").val();
+        var StartDay = $("#StartDay").val();
+        var EndDay = $("#EndDay").val();
+        var startTime = $("#startTime").val();
+        var EndTime = $("#EndTime").val();
+                // all property names must be same as the viewmodel has
+                var jsonData = {
+        CampaignName: CampaignName,
+        descriptionCA: descriptionCA,
+        CodeCount: CodeCount,
+        CodeLength: CodeLength,
+        Prefix: Prefix,
+        Postfix: Postfix,
+        StartDay:StartDay,
+        EndDay:EndDay,
+        startTime:startTime,
+        EndTime:EndTime
+
+    };
+
+    $.ajax({
+            type: "POST",
+        url: '@Url.Action("CallProgramSizeTimeFrame", "Campaign")',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(jsonData),
+        dataType: "json",
+        success: function () {
+
+                    alert("Đã thêm " + jsonData.CampaignName + " thành công");
+
+                }
+            });
+        });
+  
+    
+    // thêm list gift product
+   $('#AddGift').click(function (e) {
+            e.preventDefault(); // prevent default submit
+
+            var txtNameGift = $("#txtNameGift").val();
+            var txtdescription = $("#txtdescription").val()
+        var txtCount = $("#txtCount").val();
+
+            // all property names must be same as the viewmodel has
+            var jsonData = {
+        NameGift: txtNameGift,
+        description: txtdescription,
+        GiftCount: txtCount,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: '@Url.Action("CallGiftList", "Campaign")',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(jsonData),
+        dataType: "json",
+        success: function (data) {
+
+            alert("Đã thêm sản phẩm " + jsonData.NameGift + " thành công");
+            
+
+            }
+        });
+});
+
+
+    // thêm rule name trong gift
+     // thêm list gift product
+    $('#AddRuleGifs').click(function (e) {
+            e.preventDefault(); // prevent default submit
+
+        var RuleName = $("#RuleName").val();
+        var NameGiftRulesName = $("#NameGiftRulesName").val()
+        var Probability = $("#Probability").val();
+
+            // all property names must be same as the viewmodel has
+            var jsonData = {
+                RuleName: RuleName,
+                NameGift: NameGiftRulesName,
+                Probability: Probability
+    };
+
+    $.ajax({
+        type: "POST",
+        url: '@Url.Action("CallRulesForGifts", "Campaign")',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(jsonData),
+        dataType: "json",
+        success: function () {
+
+            alert("Đã thêm ruleName " + jsonData.RuleName + " thành công");
+
+            }
+        });
+});
+
+
+
+    //// Add active class to the current button (highlight it)
+
+    //var header = document.getElementById("choiceDIV");
+    //var btns = header.getElementsByClassName("choicebtn");
+    ////  var namecolors = document.getElementById("active2_name");
+    //for (var i = 0; i < btns.length; i++) {
+    //    btns[i].addEventListener("click", function () {
+    //        var current = document.getElementsByClassName("active2");
+
+    //        current[0].className = current[0].className.replace(" active2", "");
+    //        this.className += " active2";
+    //        //namecolors[0].getElementById = namecolors[0].getElementById.replace("active2_name", "");
+    //        //  namecolors[i].style.color = "blue";
+
+
+    //    });
+
+    //}
+
+    var btnContainer = document.getElementById("choiceDIV");
+    var btns = btnContainer.getElementsByClassName("choicebtn");
+    var namecolors = btnContainer.getElementsByClassName("active2_name");
+     for (var i = 0; i < btns.length; i++) {
+         btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active2");
+        current[0].classList.toggle('active2');
+        this.classList.toggle('active2');
+        var target = this.dataset.target;
+        filterSelection(target);
+        //
+        //var next = document.getElementsByClassName("next_active");
+        //next[0].classList.toggle('next_active');
+        //this.classList.toggle('next_active');
+    });
+ }
+
+function filterSelection(target) {
+    document.querySelectorAll('.filterDiv').forEach((div) => {
+        if (target === 'all' || div.classList.contains(target)) {
+            div.classList.remove('hide');
+        }
+        else if (target === '2') {
+            div.classList.add('hide');
+            document.getElementById('right-submit').style.display = "block";
+            document.getElementById('Savedraft').style.display = "block";
+            document.getElementById('Save').style.display = "none";
+        }
+        else if (target === '5') {
+            div.classList.add('hide');
+            document.getElementById('right-submit').style.display = "block";
+            document.getElementById('Savedraft').style.display = "none";
+            document.getElementById('Save').style.display = "block";
+        }
+        else {         
+            document.getElementById('right-submit').style.display = "none";
+            div.classList.add('hide');
+        }
+    });
+
+
+}
+function myFunction() {
+    var x = document.getElementById("press1");
+    var y = document.getElementById("myBtnModal");
+    if (x.style.display === "none") {
+        x.style.display = "inline-block";
+        //y.style.display = "none";
+    } else {
+        x.style.display = "none";
+        y.style.display = "inline-block";
+    }
+}
+
+/* create modal table*/
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtnModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("closebtn")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+</script>

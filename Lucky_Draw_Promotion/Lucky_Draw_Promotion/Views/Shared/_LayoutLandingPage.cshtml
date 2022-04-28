@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/CSS/Layout1.css" rel="stylesheet" />
+    <style>
+        * {
+            background: url("/Content/images/background.jpg") no-repeat fixed center;
+            /*background-repeat:no-repeat;*/
+            background-size: 100%;
+            z-index:-1;
+        }
+    </style>
+    <!--===============================================================================================-->
+    <script src="~/Content/CSS/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/CSS/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/CSS/main.css">
+</head>
+<body>
+        @RenderBody()
+  
+
+</body>
+</html>

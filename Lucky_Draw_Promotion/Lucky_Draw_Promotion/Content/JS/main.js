@@ -27,18 +27,5 @@ function changeImageSelection() {
     }, 1500);
 }
 
-// ----- Plain Javascipt ---- //
-// const selectbox = document.getElementById("selectbox");
-// const imagecontainer = document.querySelector(".images");
-// let selection = selectbox.dataset.selected;
 
-// selectbox.addEventListener("change", e => {
-//   selection = selectbox.value;
-//   imagecontainer.classList.add("loading");
-//   imagecontainer.dataset.selected = "";
 
-//   setTimeout(() => {
-//     imagecontainer.classList.remove("loading");
-//     imagecontainer.dataset.selected = selection;
-//   }, 1500);
-// });

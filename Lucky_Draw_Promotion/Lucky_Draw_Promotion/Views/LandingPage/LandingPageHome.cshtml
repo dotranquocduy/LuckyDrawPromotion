@@ -1,0 +1,328 @@
+﻿
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutRenderLanding.cshtml";
+    //  Model.campaign.MaCampaign = 1;
+    //    Model.MaCampaign = ViewBag.index;
+
+ 
+
+    var item = ViewBag.index;
+
+}
+<style>
+    .containerPadding {
+        padding: 170px 0px 170px 0px;
+    }
+
+    .textWhite {
+        color: white;
+    }
+
+    .fontSizeLarge {
+        font-size: 20px;
+    }
+
+    .fontXLarge {
+        font-size: 35px;
+    }
+
+    .darkBackground {
+        background-color: #222126;
+    }
+
+    .darkBackgroundBtn {
+        background-color: #948cad;
+        color: black;
+    }
+    /*Override default boostrap 3*/
+    .row {
+        margin-left: 0px; /*default -15px*/
+        margin-right: 0px; /*default -15px*/
+    }
+
+    .centerBlock {
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+    }
+
+    @@media (max-width:360px) {
+        .containerPadding {
+            padding: 10px 0px 10px 0px;
+        }
+    }
+
+    .col-md-4{
+        width:fit-content;
+    }
+    .button {
+        position: relative;
+        background-color: #4CAF50;
+        border: none;
+        font-size: 28px;
+        color: #FFFFFF;
+        padding: 20px;
+        width: 200px;
+        text-align: center;
+        transition-duration: 0.4s;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+        .button:after {
+            content: "";
+            background: #f1f1f1;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .button:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
+
+</style>
+
+
+
+    
+<div class="col-md-12 containerPadding">
+    @Html.Partial("_SuccessDarkModal")
+    @using (Html.BeginForm("PostCountdownTimer", "LandingPage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+        <h1 style="text-align:center;color:#ffe5e5;font-weight:bold;">Chương trình @item.CampaignName</h1>
+        <h2 style="text-align:center;color:#ffe5e5; font-style:italic;">Bắt đầu từ @item.StartDate đến ngày @item.EndDate</h2>
+        <div class="col-md-12">
+            @*<!--Input Hour Minute Second Section-->
+                <div class="row col-md-9 text-center textWhite centerBlock" style="padding:20px 0px 20px 0px">
+                    <span class="col-md-4 fontSizeLarge">
+                        @Html.TextBoxFor(m => m.Hour, new { @class = "form-control text-center", style = "width:100%" }) Hour
+                    </span>
+                    <span class="col-md-4 fontSizeLarge">
+                        @Html.TextBoxFor(m => m.Minute, new { @class = "form-control text-center", style = "width:100%" }) Minute
+                    </span>
+                    <span class="col-md-4 fontSizeLarge">
+                        @Html.TextBoxFor(m => m.Second, new { @class = "form-control text-center", style = "width:100%" }) Second
+                    </span>
+                </div>
+
+                <!--Start and Reset button Section-->
+                <div class="row col-md-12 text-center">
+                    <button type="submit" class="btn btn-lg btn-primary">Start</button>
+                    <button type="button" onclick="resetTimer()" class="btn btn-lg btn-default">Reset</button>
+                </div>*@
+
+            <!--Count down Time Left Section-->
+            <div class="row col-md-12 text-center">
+                <h3 class="textWhite text-center" style="padding:10px 0px 10px 0px"><i class="fa fa-hourglass-half"></i> Time Left:</h3>
+            </div>
+
+            <div id="countdownResult" class="row col-md-12">
+                <div class="col-md-4 centerBlock">
+                    <div class="row">
+
+                        <div class="col-md-4 text-center textWhite" style="padding:10px">
+                            <div style="background-color: rgba(0, 0, 0, 0.3);padding:10px">
+                                <div class="row fontXLarge" id="DayLeft" style="padding:40px;font-weight:bold;">
+
+                                </div>
+                                <div class="row fontSizeLarge">
+                                    Ngày
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4 text-center textWhite" style="padding:10px">
+                            <div style="background-color: rgba(0, 0, 0, 0.3);padding:10px">
+                                <div class="row fontXLarge" id="hrsLeft" style="padding:40px;font-weight:bold;">
+
+                                </div>
+                                <div class="row fontSizeLarge">
+                                    Giờ
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 text-center textWhite" style="padding:10px">
+                            <div style="background-color: rgba(0, 0, 0, 0.3);padding:10px">
+                                <div class="row fontXLarge" id="minsLeft" style="padding:40px;font-weight:bold">
+
+                                </div>
+                                <div class="row fontSizeLarge">
+                                    Phút
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 text-center textWhite" style="padding:10px">
+                            <div style="background-color: rgba(0, 0, 0, 0.3);padding:10px">
+                                <div class="row fontXLarge" id="secsLeft" style="padding:40px;font-weight:bold">
+
+                                </div>
+                                <div class="row fontSizeLarge">
+                                    Giây
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @using (Html.BeginForm("LandingPageHome", "LandingPage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+        <button class="button" id="myButton" style="left:43.5%;bottom:-30px">Tham gia</button>
+    }
+        <!--Modal Popup-->
+        <div id="modalPopup" class="btn darkBackgroundBtn smallPaddingAround" data-toggle="modal" data-target="#successDarkModal" style="display:none">
+
+        </div>
+
+        <!--Audio-->
+        <audio id="timesupAudio">
+            <!--credit: audio from http://www.orangefreesounds.com/wecker-sound/ artist:Alexander-->
+            <source src="~/Audio/Wecker-sound.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+
+
+    function CallDateTime() {
+        $.ajax({
+            url: "@Url.Action("CallDateTime", "LandingPage", new {@id =item.MaCampaign })",
+            type: "POST",
+            dataType: "json",
+            cache: "false",
+            success: function (data) {
+           
+
+                var end = data.End;
+                var endAr = end.split('/');
+                var endday = new Date(endAr[1] + '/' + endAr[0] + '/' + endAr[2]);
+
+
+                //var now = data.Start;
+                //var nowAr = now.split('/');
+                //var nowday = new Date(nowAr[1] + '/' + nowAr[0] + '/' + nowAr[2]);
+                //var distance =  endday - nowday;
+
+
+
+                //var end = new Date(2022,04,26);
+                //var now = new Date();
+                //var distance = end - now;
+
+
+               // alert(distance);
+
+                showRemaining(endday);
+
+                    
+                
+            }
+        });
+
+
+    }
+
+    //// bind myButton click event to call getData
+    //$(document).ready(function () {
+    //    $('#myButton').bind('click', CallDateTime);
+    //});
+
+   
+
+        var dt = '@TempData["EndTime"]';
+        var dateAr = dt.split('-'); //dd-MM-yyyy
+        var newDate = dateAr[1] + '/' + dateAr[0] + '/' + dateAr[2]; //dd/MM/yyyy (string)
+
+        
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+        timer = setInterval(showRemaining, 1000); //set the timer to happen every 1000ms (1s)
+
+        var timesupAudio = document.getElementById("timesupAudio");
+
+
+        //var endday = new Date(2022,04,26);
+      
+
+      
+    function showRemaining(endday) {
+
+        CallDateTime();
+        var nowday = new Date();
+        var distance = endday - nowday;
+
+            //var distance = end - now; //in ms
+            //user not yet submit input countdown hour/minute/second
+            if ((distance)>=0) {
+                //    document.getElementById('DayLeft').innerHTML = "";
+                //    document.getElementById('hrsLeft').innerHTML = "";
+                //    document.getElementById('minsLeft').innerHTML = "";
+                //    document.getElementById('secsLeft').innerHTML = "";
+                //} else {
+                var days = Math.floor(distance / _day); //convert ms to days
+                var hours = Math.floor((distance % _day) / _hour); //convert ms to hours
+                var minutes = Math.floor((distance % _hour) / _minute); //convert ms to minutes
+                var seconds = Math.floor((distance % _minute) / _second); //convert ms to seconds
+                document.getElementById('DayLeft').innerHTML = days;
+                document.getElementById('hrsLeft').innerHTML = hours;
+                document.getElementById('minsLeft').innerHTML = minutes;
+                document.getElementById('secsLeft').innerHTML = seconds;
+            }
+            else if (distance < 0) {
+                //play times up audio and display times up popup
+                resetTimer();
+                $('#modalPopup').click();
+                timesupAudio.volume = 0.5;
+                timesupAudio.play();
+            }
+        }
+
+        function resetTimer() {
+            $.ajax({
+                url: '@Url.Action("StopTimer", "LandingPage")',
+                type: "GET",
+                success: function (result) {
+                    clearInterval(timer);
+                    document.getElementById('DayLeft').innerHTML = "";
+                    document.getElementById('hrsLeft').innerHTML = "";
+                    document.getElementById('minsLeft').innerHTML = "";
+                    document.getElementById('secsLeft').innerHTML = "";
+                }
+            });
+        }
+        function pauseAudio() {
+            timesupAudio.pause();
+    }
+
+
+
+   
+
+
+</script>

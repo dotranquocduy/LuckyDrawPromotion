@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "ImportGifts";
+    Layout = "~/Views/Shared/_LayoutaAdminCMS.cshtml";
+}
+
+<h2>ImportGifts</h2>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        /*border-bottom: 3px solid #3864b3;*/
+        border: 3px solid #3864b3;
+    }
+
+    td, th {
+        border: 1px solid #3864b3;
+        text-align: left;
+        padding: 8px;
+    }
+</style>
+
+
+<div class="navmenu">
+    <a class="drawing" href="@Url.Action("ImportGifts","Gifts")"><i class="fa-solid fa-tags" style="font-size:25px;padding-right:5px;"></i>Import Gifts</a>
+
+
+  
+
+</div>
+
+
+<div class="navmenu2">
+    <table>
+        <tr>
+            <th>Rule namere</th>
+            <th>Gift</th>
+            <th>Schedule</th>
+            <th>Time</th>
+            <th>Total Gifts</th>
+            <th>Probability(%)</th>
+            <th>Priority</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+            <td>Germany</td>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Laughing Bacchus Winecellars</td>
+            <td>Yoshi Tannamuri</td>
+            <td>Canada</td>
+            <td>Canada</td>
+            <td>Laughing Bacchus Winecellars</td>
+            <td>Yoshi Tannamuri</td>
+            <td>Canada</td>
+            <td>Canada</td>
+        </tr>
+        <tr>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Giovanni Rovelli</td>
+            <td>Italy</td>
+            <td>Italy</td>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Giovanni Rovelli</td>
+            <td>Italy</td>
+            <td>Italy</td>
+        </tr>
+    </table>
+</div>
